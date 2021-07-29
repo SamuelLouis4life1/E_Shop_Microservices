@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CatalogAPI", "CatalogAPI", "{F63DAB24-F8B0-4E24-908C-390183EE9F23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "Catalog.API\Catalog.API.csproj", "{E2EF0A0B-B63D-4E69-B4F6-4B7C40547A36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Catalog.API\Catalog.API.csproj", "{E2EF0A0B-B63D-4E69-B4F6-4B7C40547A36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5FEAEB99-D776-4EE9-97E0-EF90FA4B8942}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{F63DAB24-F8B0-4E24-908C-390183EE9F23} = {5FEAEB99-D776-4EE9-97E0-EF90FA4B8942}
 		{E2EF0A0B-B63D-4E69-B4F6-4B7C40547A36} = {F63DAB24-F8B0-4E24-908C-390183EE9F23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
