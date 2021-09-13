@@ -1,0 +1,4 @@
+1)	Portainer Username: admin
+	Portainer Password: admin1234
+
+2) 
