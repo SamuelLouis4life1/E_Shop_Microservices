@@ -1,4 +1,8 @@
 1)	Portainer Username: admin
 	Portainer Password: admin1234
 
-2) 
+2)  Pgadmin Username and Email:
+    PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
+	PGADMIN_DEFAULT_PASSWORD=admin1234
+
+3) 
