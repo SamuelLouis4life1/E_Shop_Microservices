@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EventBus.Messages.Events;
+using Ordering.Application.Features.Orders.Commands.CheckoutOrder;
+
 
 namespace Ordering.API.Mapper
 {
@@ -10,7 +9,7 @@ namespace Ordering.API.Mapper
     {
         public OrderingProfile()
         {
-            //CreateMap<CheckoutOrderCommand, BasketCheckoutEvent>().ReverseMap();
+            CreateMap<CheckoutOrderCommand, BasketCheckoutEvent>().ReverseMap();
         }
     }
 }

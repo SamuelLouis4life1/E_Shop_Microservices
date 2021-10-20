@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Basket.API.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EventBus.Messages.Events;
+
 
 namespace Basket.API.Mapper
 {
@@ -11,7 +9,7 @@ namespace Basket.API.Mapper
     {
         public BasketProfile()
         {
-            //CreateMap<BasketCheckout, BasketCheckoutEvent>().ReverseMap();
+            CreateMap<BasketCheckout, BasketCheckoutEvent>().ReverseMap();
         }
     }
 }
