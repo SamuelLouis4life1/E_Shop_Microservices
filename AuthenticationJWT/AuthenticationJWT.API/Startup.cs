@@ -1,3 +1,6 @@
+using AuthenticationJWT.API.Helpers;
+using AuthenticationJWT.API.Repositories;
+using AuthenticationJWT.API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,6 +19,8 @@ namespace AuthenticationJWT.API
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +31,15 @@ namespace AuthenticationJWT.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            // configure strongly typed settings objects
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            // configure DI for application services
+            services.AddScoped<IJwtUtils, JwtUtils>();
+            services.AddScoped<IUserInterface, UserRepository>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
