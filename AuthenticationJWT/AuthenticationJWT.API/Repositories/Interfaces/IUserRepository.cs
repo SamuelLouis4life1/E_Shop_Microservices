@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AuthenticationJWT.API.Repositories.Interfaces
 {
-    public interface IUserInterface
+    public interface IUserRepository
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAll();

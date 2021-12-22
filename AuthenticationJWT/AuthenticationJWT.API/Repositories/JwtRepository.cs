@@ -12,11 +12,11 @@ using System.Text;
 
 namespace AuthenticationJWT.API.Repositories
 {
-    public class JwtUtils : IJwtUtils
+    public class JwtRepository : IJwtRepository
     {
         private readonly AppSettings _appSettings;
 
-        public JwtUtils(IOptions<AppSettings> appSettings)
+        public JwtRepository(IOptions<AppSettings> appSettings)
         {
             _appSettings = appSettings.Value;
         }

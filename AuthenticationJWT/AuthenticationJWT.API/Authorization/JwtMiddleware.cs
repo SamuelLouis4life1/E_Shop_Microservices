@@ -18,7 +18,7 @@ namespace AuthenticationJWT.API.Authorization
             _appSettings = appSettings.Value;
         }
 
-        public async Task Invoke(HttpContext context, IUserInterface userInterface, IJwtUtils jwtUtils)
+        public async Task Invoke(HttpContext context, IUserRepository userInterface, IJwtRepository jwtUtils)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
             var userId = jwtUtils.ValidateToken(token);

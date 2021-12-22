@@ -11,13 +11,13 @@ using System.Security.Authentication;
 
 namespace AuthenticationJWT.API.Repositories
 {
-    public class UserRepository : IUserInterface
+    public class UserRepository : IUserRepository
     {
         private AuthenticateDbContext _context;
-        private IJwtUtils _jwtUtils;
+        private IJwtRepository _jwtUtils;
         private readonly IMapper _mapper;
 
-        public UserRepository(AuthenticateDbContext context, IJwtUtils jwtUtils, IMapper mapper)
+        public UserRepository(AuthenticateDbContext context, IJwtRepository jwtUtils, IMapper mapper)
         {
             _context = context;
             _jwtUtils = jwtUtils;

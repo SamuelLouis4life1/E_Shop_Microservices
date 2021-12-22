@@ -3,7 +3,7 @@
 
 namespace AuthenticationJWT.API.Repositories.Interfaces
 {
-    public interface IJwtUtils
+    public interface IJwtRepository
     {
         public string GenerateToken(User user);
         public int? ValidateToken(string token);
