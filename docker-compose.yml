@@ -1,6 +1,9 @@
 version: '3.4'
 
 services:
+  authenticatedb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
   catalogdb:
     image: mongo
 
@@ -76,11 +79,18 @@ services:
       context: .
       dockerfile: WebApps/AspnetRunBasics/Dockerfile
 
+  authenticationjwt.api:
+    image: ${DOCKER_REGISTRY-}authenticationjwtapi
+    build:
+      context: .
+      dockerfile: AuthenticationJWT/AuthenticationJWT.API/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
   postgres_data:
   pgadmin_data:
+
 
 
 
