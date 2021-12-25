@@ -1,15 +1,20 @@
-﻿using System;
+﻿using AspnetRunBasics.Models.Authenticate;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace AspnetRunBasics.Services.Interfaces
 {
     public interface IUserService
     {
+        AuthenticateRequestModel Authenticate(AuthenticateRequestModel model);
+        IEnumerable<AuthenticateRequestModel> GetAll();
+        RegisterRequestModel GetById(int id);
+        void Register(RegisterRequestModel model);
+        void UpdateUser(int id, UpdateRequestModel model);
+        void DeleteUser(int id);
+
         //Task<UserModel> GetUser(string userName);
         //Task<UserModel> CreateUser(UserModel userModel);
         //Task<UserModel> UpdateUser(UserModel userModel);
-        Task DeleteUser(string userName);
     }
 }

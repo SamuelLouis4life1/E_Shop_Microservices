@@ -4,16 +4,16 @@ using System.Globalization;
 
 namespace AuthenticationJWT.API.Exceptions
 {
-    public class AuthenticationException : ApplicationException
+    public class AuthException : ApplicationException
     {
         //public AuthenticationException(string name, object key) : base($"Entity \"{name}\" ({key}) was not found.")
         //{
         //}
-        public AuthenticationException() : base() { }
+        public AuthException() : base() { }
 
-        public AuthenticationException(string message) : base(message) { }
+        public AuthException(string message) : base(message) { }
 
-        public AuthenticationException(string message, params object[] args)
+        public AuthException(string message, params object[] args)
             : base(String.Format(CultureInfo.CurrentCulture, message, args))
         {
         }

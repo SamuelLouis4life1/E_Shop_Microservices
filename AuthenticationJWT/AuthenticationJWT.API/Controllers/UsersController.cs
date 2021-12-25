@@ -1,12 +1,11 @@
 ﻿using AuthenticationJWT.API.Authorization;
-using AuthenticationJWT.API.Data;
 using AuthenticationJWT.API.Helpers;
 using AuthenticationJWT.API.Models;
-using AuthenticationJWT.API.Repositories;
 using AuthenticationJWT.API.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+
 
 namespace AuthenticationJWT.API.Controllers
 {
@@ -15,16 +14,11 @@ namespace AuthenticationJWT.API.Controllers
     [Route("api/v1/[controller]")]
     public class UsersController : ControllerBase
     {
-
-
         private IUserRepository _userService;
         private IMapper _mapper;
         private readonly AppSettings _appSettings;
 
-        public UsersController(
-            IUserRepository userService,
-            IMapper mapper,
-            IOptions<AppSettings> appSettings)
+        public UsersController(IUserRepository userService, IMapper mapper, IOptions<AppSettings> appSettings)
         {
             _userService = userService;
             _mapper = mapper;
@@ -73,6 +67,14 @@ namespace AuthenticationJWT.API.Controllers
         {
             _userService.Delete(id);
             return Ok(new { message = "User deleted successfully" });
+        }
+
+
+        [HttpPost("Generatetoken")]
+        public IActionResult GenerateToken(RegisterRequest model)
+        {
+            _userService.Register(model);
+            return Ok(new { message = "Registration successful" });
         }
 
     }

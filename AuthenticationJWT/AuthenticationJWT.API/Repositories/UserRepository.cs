@@ -7,7 +7,7 @@ using BCryptNet = BCrypt.Net.BCrypt;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Authentication;
-
+using AuthenticationJWT.API.Exceptions;
 
 namespace AuthenticationJWT.API.Repositories
 {
@@ -30,7 +30,8 @@ namespace AuthenticationJWT.API.Repositories
 
             // validate
             if (user == null || !BCryptNet.Verify(model.Password, user.PasswordHash))
-                throw new AuthenticationException("Username or password is incorrect");
+                throw new AuthException("Username or password is incorrect");
+            
 
             // authentication successful
             var response = _mapper.Map<AuthenticateResponse>(user);
@@ -52,7 +53,7 @@ namespace AuthenticationJWT.API.Repositories
         {
             // validate
             if (_context.Users.Any(x => x.UserName == model.UserName))
-                throw new AuthenticationException("Username '" + model.UserName + "' is already taken");
+                throw new AuthException("Username '" + model.UserName + "' is already taken");
 
             // map model to new user object
             var user = _mapper.Map<User>(model);
@@ -71,7 +72,7 @@ namespace AuthenticationJWT.API.Repositories
 
             // validate
             if (model.UserName != user.UserName && _context.Users.Any(x => x.UserName == model.UserName))
-                throw new AuthenticationException("Username '" + model.UserName + "' is already taken");
+                throw new AuthException("Username '" + model.UserName + "' is already taken");
 
             // hash password if it was entered
             if (!string.IsNullOrEmpty(model.Password))
