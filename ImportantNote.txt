@@ -8,3 +8,11 @@
 3) RabbitMQ UserName and Password: guest
 
 4) docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+5) https://docs.microsoft.com/pt-br/aspnet/core/migration/1x-to-2x/identity-2x?view=aspnetcore-6.0 
+
+6) 
+
+7) 
+
+

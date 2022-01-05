@@ -43,7 +43,33 @@ namespace AspnetRunBasics
             //    .AddPolicyHandler(GetCircuitBreakerPolicy());
 
 
+
             services.AddRazorPages();
+
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+            services.AddAuthentication().AddFacebook(options =>
+            {
+                options.AppId = "479144716347128";
+                options.AppSecret = "8888cefba55e9cfa06a2b28f0495e533";
+            });
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "501895478080-bg9l9dmbio9k0n4vrglnb0nttbku18a1.apps.googleusercontent.com";
+                options.ClientSecret = "QXNcManVHU1ZJzR5duBbuZbA";
+
+            });
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
