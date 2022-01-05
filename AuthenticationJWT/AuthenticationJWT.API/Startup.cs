@@ -61,7 +61,8 @@ namespace AuthenticationJWT.API
 
 
             // migrate any database changes on startup (includes initial db creation)
-           authenticateDbContext.Database.Migrate();
+
+           //authenticateDbContext.Database.Migrate();
 
             // global cors policy
             app.UseCors(x => x
