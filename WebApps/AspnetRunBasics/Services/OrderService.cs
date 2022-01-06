@@ -22,5 +22,11 @@ namespace AspnetRunBasics.Services
             var response = await _client.GetAsync($"/Order/{userName}");
             return await response.ReadContentAs<List<OrderResponseModel>>();
         }
+
+        public async Task<IEnumerable<OrderResponseModel>> GetOrdersByUserId(int userId)
+        {
+            var response = await _client.GetAsync($"/Order/{userId}");
+            return await response.ReadContentAs<List<OrderResponseModel>>();
+        }
     }
 }

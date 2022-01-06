@@ -32,6 +32,15 @@ namespace Ordering.API.Controllers
             return Ok(orders);
         }
 
+        [HttpGet("{userName}", Name = "GetOrder")]
+        [ProducesResponseType(typeof(IEnumerable<OrdersVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<OrdersVm>>> GetOrdersByUserId(int userId)
+        {
+            var query = new GetOrdersListQuery(userId);
+            var orders = await _mediator.Send(query);
+            return Ok(orders);
+        }
+
         // testing purpose
         [HttpPost(Name = "CheckoutOrder")]
         [ProducesResponseType((int)HttpStatusCode.OK)]

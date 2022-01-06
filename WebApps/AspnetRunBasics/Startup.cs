@@ -42,10 +42,14 @@ namespace AspnetRunBasics
             //    .AddPolicyHandler(GetRetryPolicy())
             //    .AddPolicyHandler(GetCircuitBreakerPolicy());
 
+            services.AddHttpClient<IUserService, UserService>(c => 
+                c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
+            //    .AddHttpMessageHandler<LoggingDelegatingHandler>()
+            //    .AddPolicyHandler(GetRetryPolicy())
+            //    .AddPolicyHandler(GetCircuitBreakerPolicy());
 
 
             services.AddRazorPages();
-
 
             services.ConfigureApplicationCookie(options =>
             {

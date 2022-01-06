@@ -1,15 +1,24 @@
-﻿using AspnetRunBasics.Models.Authenticate;
+﻿using AspnetRunBasics.Extensions;
+using AspnetRunBasics.Models.Authenticate;
 using AspnetRunBasics.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace AspnetRunBasics.Services
 {
     public class UserService : IUserService
     {
-        public AuthenticateRequestModel Authenticate(AuthenticateRequestModel model)
+        private readonly HttpClient _userService;
+
+        public UserService(HttpClient userService)
+        {
+            _userService = userService ?? throw new ArgumentNullException(nameof(userService)); ;
+        }
+
+        public Task<AuthenticateRequestModel> Authenticate(AuthenticateRequestModel model)
         {
             throw new NotImplementedException();
         }
@@ -24,19 +33,32 @@ namespace AspnetRunBasics.Services
             throw new NotImplementedException();
         }
 
-        public RegisterRequestModel GetById(int id)
+        public async Task<RegisterRequestModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            var response = await _userService.GetAsync($"/users/{id}");
+            return await response.ReadContentAs<RegisterRequestModel>();
         }
 
-        public void Register(RegisterRequestModel model)
+        public async Task<RegisterRequestModel> Register(RegisterRequestModel model)
         {
-            throw new NotImplementedException();
+            var response = await _userService.PostAsJson($"/register", model);
+            if (response.IsSuccessStatusCode)
+                return await response.ReadContentAs<RegisterRequestModel>();
+            else
+            {
+                throw new Exception("Something went wrong when calling api.");
+            }
         }
 
-        public void UpdateUser(int id, UpdateRequestModel model)
+        public async Task<UpdateRequestModel> UpdateUser(int id, UpdateRequestModel model)
         {
-            throw new NotImplementedException();
+            var response = await _userService.PostAsJson($"/Users/{id}", model);
+            if (response.IsSuccessStatusCode)
+                return await response.ReadContentAs<UpdateRequestModel>();
+            else
+            {
+                throw new Exception("Something went wrong when calling api.");
+            }
         }
     }
 }
