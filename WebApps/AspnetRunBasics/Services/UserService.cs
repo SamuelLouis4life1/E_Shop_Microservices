@@ -28,9 +28,10 @@ namespace AspnetRunBasics.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<AuthenticateRequestModel> GetAll()
+        public async Task<IEnumerable <AuthenticateRequestModel>> GetAllUsers()
         {
-            throw new NotImplementedException();
+            var response = await _userService.GetAsync("/users");
+            return await response.ReadContentAs<List<AuthenticateRequestModel>>();
         }
 
         public async Task<RegisterRequestModel> GetById(int id)

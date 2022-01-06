@@ -7,7 +7,7 @@ namespace AspnetRunBasics.Services.Interfaces
     public interface IUserService
     {
         Task<AuthenticateRequestModel> Authenticate(AuthenticateRequestModel model);
-        IEnumerable<AuthenticateRequestModel> GetAll();
+        Task <IEnumerable<AuthenticateRequestModel>> GetAllUsers();
         Task<RegisterRequestModel> GetById(int id);
         Task<RegisterRequestModel> Register(RegisterRequestModel model);
         Task<UpdateRequestModel> UpdateUser(int id, UpdateRequestModel model);
