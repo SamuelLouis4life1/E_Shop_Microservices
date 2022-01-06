@@ -43,9 +43,15 @@ namespace Shopping.Aggregator
 
             services.AddHttpClient<IOrderService, OrderService>(c =>
                 c.BaseAddress = new Uri(Configuration["ApiSettings:OrderingUrl"]));
-                //.AddHttpMessageHandler<LoggingDelegatingHandler>()
-                //.AddPolicyHandler(GetRetryPolicy())
-                //.AddPolicyHandler(GetCircuitBreakerPolicy());
+            //.AddHttpMessageHandler<LoggingDelegatingHandler>()
+            //.AddPolicyHandler(GetRetryPolicy())
+            //.AddPolicyHandler(GetCircuitBreakerPolicy());
+
+            services.AddHttpClient<IUserService, UserService>(c =>
+                c.BaseAddress = new Uri(Configuration["ApiSettings:UserUrl"]));
+            //.AddHttpMessageHandler<LoggingDelegatingHandler>()
+            //.AddPolicyHandler(GetRetryPolicy())
+            //.AddPolicyHandler(GetCircuitBreakerPolicy());
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -22,5 +22,11 @@ namespace Shopping.Aggregator.Services
             var response = await _client.GetAsync($"/api/v1/Order/{userName}");
             return await response.ReadContentAs<List<OrderResponseModel>>();
         }
+
+        public async Task<IEnumerable<OrderResponseModel>> GetOrdersByUserId(int userId)
+        {
+            var response = await _client.GetAsync($"/api/v1/Order/{userId}");
+            return await response.ReadContentAs<List<OrderResponseModel>>();
+        }
     }
 }

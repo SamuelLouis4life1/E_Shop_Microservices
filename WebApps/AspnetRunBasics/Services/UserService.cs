@@ -18,14 +18,10 @@ namespace AspnetRunBasics.Services
             _userService = userService ?? throw new ArgumentNullException(nameof(userService)); ;
         }
 
-        public Task<AuthenticateRequestModel> Authenticate(AuthenticateRequestModel model)
+        public async Task<AuthenticateResponse> Authenticate(AuthenticateResponse model)
         {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteUser(int id)
-        {
-            throw new NotImplementedException();
+            var response = await _userService.GetAsync("/authenticate");
+            return await response.ReadContentAs<AuthenticateResponse>();
         }
 
         public async Task<IEnumerable <AuthenticateRequestModel>> GetAllUsers()
@@ -61,5 +57,10 @@ namespace AspnetRunBasics.Services
                 throw new Exception("Something went wrong when calling api.");
             }
         }
+        public async Task DeleteUser(int id)
+        {
+            await _userService.DeleteAsync($"/Users/{id}");
+        }
+
     }
 }

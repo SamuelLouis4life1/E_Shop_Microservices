@@ -6,12 +6,12 @@ namespace AspnetRunBasics.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<AuthenticateRequestModel> Authenticate(AuthenticateRequestModel model);
+        Task<AuthenticateResponse> Authenticate(AuthenticateResponse model);
         Task <IEnumerable<AuthenticateRequestModel>> GetAllUsers();
         Task<RegisterRequestModel> GetById(int id);
         Task<RegisterRequestModel> Register(RegisterRequestModel model);
         Task<UpdateRequestModel> UpdateUser(int id, UpdateRequestModel model);
-        void DeleteUser(int id);
+        Task DeleteUser(int id);
 
         //Task<UserModel> CreateUser(UserModel userModel);
     }

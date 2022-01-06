@@ -21,5 +21,11 @@ namespace Shopping.Aggregator.Services
             var response = await _client.GetAsync($"/api/v1/Basket/{userName}");
             return await response.ReadContentAs<BasketModel>();
         }
+
+        public async Task<BasketModel> GetBasketByUserId(int userId)
+        {
+            var response = await _client.GetAsync($"/api/v1/Basket/{userId}");
+            return await response.ReadContentAs<BasketModel>();
+        }
     }
 }
