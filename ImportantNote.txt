@@ -13,6 +13,16 @@
 
 6) https://code-maze.com/user-registration-aspnet-core-identity/
 
-7) 
+7) http://www.macoratti.net/19/04/aspncore_jwt1.htm
+
+8) http://www.macoratti.net/21/06/aspnc_tkjwtswag1.htm
+
+9) 
+
+10) 
+
+11) 
+
+12) 
 
 
