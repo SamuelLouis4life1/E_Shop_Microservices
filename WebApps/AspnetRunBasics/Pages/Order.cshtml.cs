@@ -21,8 +21,8 @@ namespace AspnetRunBasics
 
         public async Task<IActionResult> OnGetAsync()
         {
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToPage("./Account/Login", new { area = "Identity" });
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToPage("./Account/Login", new { area = "Identity" });
 
             Orders = await _orderService.GetOrdersByUserName("swn");
 
