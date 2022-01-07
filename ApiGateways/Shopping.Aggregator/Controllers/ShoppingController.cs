@@ -21,7 +21,7 @@ namespace Shopping.Aggregator.Controllers
             _catalogService = catalogService ?? throw new ArgumentNullException(nameof(catalogService));
             _basketService = basketService ?? throw new ArgumentNullException(nameof(basketService));
             _orderService = orderService ?? throw new ArgumentNullException(nameof(orderService));
-            _userService = userService ?? throw new ArgumentNullException(nameof(orderService));
+            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
         [HttpGet("{userName}", Name = "GetShopping")]
