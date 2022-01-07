@@ -11,7 +11,7 @@
 
 5) https://docs.microsoft.com/pt-br/aspnet/core/migration/1x-to-2x/identity-2x?view=aspnetcore-6.0 
 
-6) 
+6) https://code-maze.com/user-registration-aspnet-core-identity/
 
 7) 
 

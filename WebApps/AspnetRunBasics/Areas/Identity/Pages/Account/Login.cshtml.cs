@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using AspnetRunBasics.Services.Interfaces;
+using System.Net.Http;
 
 namespace AspnetRunBasics.Areas.Identity.Pages.Account
 {
@@ -20,14 +22,21 @@ namespace AspnetRunBasics.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IUserService _userService;
+        private readonly HttpClient _httpClient;
+
 
         public LoginModel(SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
+            IUserService userService,
+            HttpClient httpClient,
             UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _userService = userService;
+            _httpClient = httpClient;
         }
 
         [BindProperty]
@@ -75,7 +84,7 @@ namespace AspnetRunBasics.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         
             if (ModelState.IsValid)
             {
@@ -84,6 +93,11 @@ namespace AspnetRunBasics.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    //var user = _userService.Authenticate.GetFirstOrDefault(u => u.Email == Input.Email);
+
+                    //int count = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == user.Id).Count();
+                    //HttpContext.Session.SetInt32(SD.ssShoppingCart, count);
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
@@ -106,5 +120,7 @@ namespace AspnetRunBasics.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
+
     }
 }
