@@ -17,12 +17,20 @@
 
 8) http://www.macoratti.net/21/06/aspnc_tkjwtswag1.htm
 
-9) 
+9) https://qastack.com.br/programming/58179180/jwt-authentication-and-swagger-with-net-core-3-0
 
-10) 
+10) https://qastack.com.br/programming/58179180/jwt-authentication-and-swagger-with-net-core-3-0
 
 11) 
 
 12) 
+
+13) 
+
+14) 
+
+15) 
+
+16) 
 
 
