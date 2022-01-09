@@ -154,7 +154,6 @@ services:
       - basket.api
       - discount.api
       - ordering.api
-      - authenticationjwt.api
     ports:
       - "8010:80"
 
@@ -166,7 +165,7 @@ services:
       - "ApiSettings:CatalogUrl=http://catalog.api"
       - "ApiSettings:BasketUrl=http://basket.api"
       - "ApiSettings:OrderingUrl=http://ordering.api"
-      - "ApiSettings:AuthenticationjwtUrl=http://authenticationjwt.api"
+      - "ApiSettings:OrderingUrl=http://authenticationjwt.api"
     depends_on:
       - catalog.api
       - basket.api

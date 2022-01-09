@@ -126,7 +126,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "ordering.api",
-          "Port": "8004"
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Order/{userId}",
@@ -138,8 +138,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "authenticationjwt.api",
-          "Port": "8009"
+          "Host": "authenticate.api",
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Users/authenticate",
@@ -150,8 +150,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "authenticationjwt.api",
-          "Port": "8009"
+          "Host": "authenticate.api",
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Users",
@@ -163,8 +163,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "authenticationjwt.api",
-          "Port": "8009"
+          "Host": "authenticate.api",
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Users/{id}",
@@ -175,8 +175,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "authenticationjwt.api",
-          "Port": "8009"
+          "Host": "authenticate.api",
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Users/register",
@@ -187,8 +187,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "authenticationjwt.api",
-          "Port": "8009"
+          "Host": "authenticate.api",
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Users/generatetoken",

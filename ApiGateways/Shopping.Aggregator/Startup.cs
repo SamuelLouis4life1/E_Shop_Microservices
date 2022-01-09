@@ -48,7 +48,7 @@ namespace Shopping.Aggregator
             //.AddPolicyHandler(GetCircuitBreakerPolicy());
 
             services.AddHttpClient<IUserService, UserService>(c =>
-                c.BaseAddress = new Uri(Configuration["ApiSettings:AuthenticationjwtUrl"]));
+                c.BaseAddress = new Uri(Configuration["ApiSettings:UserUrl"]));
             //.AddHttpMessageHandler<LoggingDelegatingHandler>()
             //.AddPolicyHandler(GetRetryPolicy())
             //.AddPolicyHandler(GetCircuitBreakerPolicy());
