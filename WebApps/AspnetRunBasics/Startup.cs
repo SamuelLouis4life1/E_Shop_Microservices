@@ -43,7 +43,7 @@ namespace AspnetRunBasics
             //    .AddPolicyHandler(GetCircuitBreakerPolicy());
 
             services.AddHttpClient<IUserService, UserService>(c => 
-                c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
+                c.BaseAddress = new Uri(Configuration["ApiSettings:AuthenticationUrl"]));
             //    .AddHttpMessageHandler<LoggingDelegatingHandler>()
             //    .AddPolicyHandler(GetRetryPolicy())
             //    .AddPolicyHandler(GetCircuitBreakerPolicy());

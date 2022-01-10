@@ -13,13 +13,13 @@ namespace AuthenticationJWT.API.Mapper
         public AutoMapperProfile()
         {
             // User -> AuthenticateResponse
-            CreateMap<User, AuthenticateResponse>();
+            CreateMap<ApplicationUser, AuthenticateResponse>();
 
             // RegisterRequest -> User
-            CreateMap<RegisterRequest, User>();
+            CreateMap<RegisterRequest, ApplicationUser>();
 
             // UpdateRequest -> User
-            CreateMap<UpdateRequest, User>()
+            CreateMap<UpdateRequest, ApplicationUser>()
                 .ForAllMembers(x => x.Condition(
                     (src, dest, prop) =>
                     {
