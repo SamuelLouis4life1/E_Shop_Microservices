@@ -19,7 +19,7 @@ namespace AuthenticationJWT.API.Authorization
                 return;
 
             // authorization
-            var user = (User)context.HttpContext.Items["User"];
+            var user = (ApplicationUser)context.HttpContext.Items["ApplicationUser"];
             if (user == null)
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
         }

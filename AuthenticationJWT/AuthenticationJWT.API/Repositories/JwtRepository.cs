@@ -21,14 +21,14 @@ namespace AuthenticationJWT.API.Repositories
             _appSettings = appSettings.Value;
         }
 
-        public string GenerateToken(User user)
+        public string GenerateToken(ApplicationUser applicationUser)
         {
             // generate token that is valid for 2 hours
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("Guid", applicationUser.UserId.ToString()) }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
@@ -36,7 +36,7 @@ namespace AuthenticationJWT.API.Repositories
             return tokenHandler.WriteToken(token);
         }
 
-        public int? ValidateToken(string token)
+        public Guid? ValidateToken(string token)
         {
             if (token == null)
                 return null;
@@ -56,10 +56,10 @@ namespace AuthenticationJWT.API.Repositories
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
+                var applicationUserId = Guid.Parse(jwtToken.Claims.First(x => x.Type == "Guid").Value);
 
                 // return user id from JWT token if validation successful
-                return userId;
+                return applicationUserId;
             }
             catch
             {

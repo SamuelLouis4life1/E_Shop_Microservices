@@ -38,12 +38,12 @@ namespace AspnetRunBasics.Services
 
         public async Task<RegisterRequestModel> Register(RegisterRequestModel model)
         {
-            var response = await _userService.PostAsJson($"/register", model);
+            var response = await _userService.PostAsJson("/Users/register", model);
             if (response.IsSuccessStatusCode)
                 return await response.ReadContentAs<RegisterRequestModel>();
             else
             {
-                throw new Exception("Something went wrong when calling api.");
+                throw new Exception("Something went wrong when calling api to Register new user.");
             }
         }
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Authentication;
 using AuthenticationJWT.API.Exceptions;
+using System;
 
 namespace AuthenticationJWT.API.Repositories
 {
@@ -26,74 +27,74 @@ namespace AuthenticationJWT.API.Repositories
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _context.Users.SingleOrDefault(x => x.UserName == model.UserName);
+            var applicationUser = _context.ApplicationUsers.SingleOrDefault(x => x.UserName == model.UserName);
 
             // validate
-            if (user == null || !BCryptNet.Verify(model.Password, user.PasswordHash))
+            if (applicationUser == null || !BCryptNet.Verify(model.Password, applicationUser.PasswordHash))
                 throw new AuthException("Username or password is incorrect");
             
 
             // authentication successful
-            var response = _mapper.Map<AuthenticateResponse>(user);
-            response.JwtToken = _jwtUtils.GenerateToken(user);
+            var response = _mapper.Map<AuthenticateResponse>(applicationUser);
+            response.JwtToken = _jwtUtils.GenerateToken(applicationUser);
             return response;
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<ApplicationUser> GetAll()
         {
-            return _context.Users;
+            return _context.ApplicationUsers;
         }
 
-        public User GetById(int id)
+        public ApplicationUser GetById(Guid UserId)
         {
-            return getUser(id);
+            return getUser(UserId);
         }
 
         public void Register(RegisterRequest model)
         {
             // validate
-            if (_context.Users.Any(x => x.UserName == model.UserName))
+            if (_context.ApplicationUsers.Any(x => x.UserName == model.UserName))
                 throw new AuthException("Username '" + model.UserName + "' is already taken");
 
             // map model to new user object
-            var user = _mapper.Map<User>(model);
+            var user = _mapper.Map<ApplicationUser>(model);
 
             // hash password
             user.PasswordHash = BCryptNet.HashPassword(model.Password);
 
             // save user
-            _context.Users.Add(user);
+            _context.ApplicationUsers.Add(user);
             _context.SaveChanges();
         }
 
-        public void Update(int id, UpdateRequest model)
+        public void Update(Guid userId, UpdateRequest model)
         {
-            var user = getUser(id);
+            var applicationUser = getUser(userId);
 
             // validate
-            if (model.UserName != user.UserName && _context.Users.Any(x => x.UserName == model.UserName))
+            if (model.UserName != applicationUser.UserName && _context.ApplicationUsers.Any(x => x.UserName == model.UserName))
                 throw new AuthException("Username '" + model.UserName + "' is already taken");
 
             // hash password if it was entered
             if (!string.IsNullOrEmpty(model.Password))
-                user.PasswordHash = BCryptNet.HashPassword(model.Password);
+                applicationUser.PasswordHash = BCryptNet.HashPassword(model.Password);
 
             // copy model to user and save
-            _mapper.Map(model, user);
-            _context.Users.Update(user);
+            _mapper.Map(model, applicationUser);
+            _context.ApplicationUsers.Update(applicationUser);
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid UserId)
         {
-            var user = getUser(id);
-            _context.Users.Remove(user);
+            var user = getUser(UserId);
+            _context.ApplicationUsers.Remove(user);
             _context.SaveChanges(); ;
         }
 
-        private User getUser(int id)
+        private ApplicationUser getUser(Guid UserId)
         {
-            var user = _context.Users.Find(id);
+            var user = _context.ApplicationUsers.Find(UserId);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
         }

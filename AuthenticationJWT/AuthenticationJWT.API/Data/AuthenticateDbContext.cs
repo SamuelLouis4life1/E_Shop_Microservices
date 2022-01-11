@@ -19,7 +19,7 @@ namespace AuthenticationJWT.API.Data
             //options.UseSqlServer(Configuration.GetConnectionString("ApplicationConnectionString"));
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AuthenticationJWT.API.Entities;
 using AuthenticationJWT.API.Models;
+using System;
 using System.Collections.Generic;
 
 
@@ -8,10 +9,10 @@ namespace AuthenticationJWT.API.Repositories.Interfaces
     public interface IUserRepository
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
-        IEnumerable<User> GetAll();
-        User GetById(int id);
+        IEnumerable<ApplicationUser> GetAll();
+        ApplicationUser GetById(Guid userId);
         void Register(RegisterRequest model);
-        void Update(int id, UpdateRequest model);
-        void Delete(int id);
+        void Update(Guid userId, UpdateRequest model);
+        void Delete(Guid userId);
     }
 }

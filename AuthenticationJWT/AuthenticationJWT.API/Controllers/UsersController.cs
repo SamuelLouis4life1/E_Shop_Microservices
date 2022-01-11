@@ -5,7 +5,7 @@ using AuthenticationJWT.API.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-
+using System;
 
 namespace AuthenticationJWT.API.Controllers
 {
@@ -48,24 +48,24 @@ namespace AuthenticationJWT.API.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        [HttpGet("{userId}")]
+        public IActionResult GetById(Guid userId)
         {
-            var user = _userService.GetById(id);
+            var user = _userService.GetById(userId);
             return Ok(user);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, UpdateRequest model)
+        [HttpPut("{userId}")]
+        public IActionResult Update(Guid userId, UpdateRequest model)
         {
-            _userService.Update(id, model);
+            _userService.Update(userId, model);
             return Ok(new { message = "User updated successfully" });
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{userId}")]
+        public IActionResult Delete(Guid userId)
         {
-            _userService.Delete(id);
+            _userService.Delete(userId);
             return Ok(new { message = "User deleted successfully" });
         }
 
