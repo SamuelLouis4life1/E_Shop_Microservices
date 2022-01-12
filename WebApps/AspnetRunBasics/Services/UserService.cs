@@ -1,6 +1,7 @@
 ﻿using AspnetRunBasics.Extensions;
 using AspnetRunBasics.Models.Authenticate;
 using AspnetRunBasics.Services.Interfaces;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,11 @@ namespace AspnetRunBasics.Services
         public async Task<RegisterRequestModel> Register(RegisterRequestModel model)
         {
             var response = await _userService.PostAsJson("/Users/register", model);
+
+
+
+
+
             if (response.IsSuccessStatusCode)
                 return await response.ReadContentAs<RegisterRequestModel>();
             else
