@@ -28,7 +28,7 @@ namespace AuthenticationJWT.API.Repositories
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("Guid", applicationUser.UserId.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("Guid", applicationUser.Id.ToString()) }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

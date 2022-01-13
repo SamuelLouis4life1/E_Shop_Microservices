@@ -5,7 +5,7 @@ namespace AuthenticationJWT.API.Models
 {
     public class AuthenticateResponse
     {
-        public Guid UserId { get; set; }
+        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }

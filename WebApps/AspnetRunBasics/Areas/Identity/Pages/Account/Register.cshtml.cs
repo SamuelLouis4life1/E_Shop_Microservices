@@ -109,8 +109,8 @@ namespace AspnetRunBasics.Areas.Identity.Pages.Account
 
                 request.AddBody(new RegisterRequestModel
                 {
-                    FirstName = Input.Email,
-                    LastName = Input.FirstName,
+                    UserName = Input.Email,
+                    LastName = Input.LastName,
                     Password = Input.Password
                 });
 
@@ -119,6 +119,7 @@ namespace AspnetRunBasics.Areas.Identity.Pages.Account
 
                 httpPost.Status.ToString();
                 httpPost.Result.ToString();
+                bool isSuccessfull = httpPost.Result.IsSuccessful;
                 httpPost.IsCompletedSuccessfully.ToString();
 
                 //customerIdTelecall = httpPost.Data.Data;
