@@ -11,10 +11,12 @@ namespace AspnetRunBasics
     public class CartModel : PageModel
     {
         private readonly IBasketService _basketService;
+        private readonly IUserService _userService;
 
-        public CartModel(IBasketService basketService)
+          public CartModel(IBasketService basketService, IUserService userService)
         {
-            _basketService = basketService ?? throw new ArgumentNullException(nameof(basketService));
+            _basketService = basketService;
+            _userService = userService;
         }
 
         public BasketModel Cart { get; set; } = new BasketModel();

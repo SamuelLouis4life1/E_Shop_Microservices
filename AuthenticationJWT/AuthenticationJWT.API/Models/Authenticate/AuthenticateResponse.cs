@@ -1,11 +1,11 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 
 namespace AuthenticationJWT.API.Models
 {
-    public class RegisterRequest
+    public class AuthenticateResponse
     {
+        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
@@ -13,9 +13,8 @@ namespace AuthenticationJWT.API.Models
         public string City { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
+        public string PhoneNumber { get; set; }
         public string Role { get; set; }
-
-        [Required]
-        public string Password { get; set; }
+        public string JwtToken { get; set; }
     }
 }

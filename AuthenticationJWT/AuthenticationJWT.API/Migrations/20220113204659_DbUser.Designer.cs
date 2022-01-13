@@ -4,14 +4,16 @@ using AuthenticationJWT.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AuthenticationJWT.API.Migrations
 {
     [DbContext(typeof(AuthenticateDbContext))]
-    partial class AuthenticateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220113204659_DbUser")]
+    partial class DbUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
