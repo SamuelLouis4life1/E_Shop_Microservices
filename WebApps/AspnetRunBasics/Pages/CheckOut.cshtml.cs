@@ -25,6 +25,8 @@ namespace AspnetRunBasics
 
         public async Task<IActionResult> OnGetAsync()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToPage("./Account/Login", new { area = "Identity" });
             var userName = "swn";
             Cart = await _basketService.GetBasket(userName);
 

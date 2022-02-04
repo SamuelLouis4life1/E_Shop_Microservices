@@ -23,8 +23,8 @@ namespace AspnetRunBasics
 
         public async Task<IActionResult> OnGetAsync()
         {
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToPage("./Account/Login", new { area = "Identity" });
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToPage("./Account/Login", new { area = "Identity" });
 
             var userName = "swn";
             Cart = await _basketService.GetBasket(userName);
@@ -35,8 +35,8 @@ namespace AspnetRunBasics
         public async Task<IActionResult> OnPostRemoveToCartAsync(string productId)
         {
 
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToPage("./Account/Login", new { area = "Identity" });
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToPage("./Account/Login", new { area = "Identity" });
 
             var userName = "swn";
             var basket = await _basketService.GetBasket(userName);
