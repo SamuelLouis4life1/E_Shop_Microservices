@@ -112,8 +112,7 @@ namespace AspnetRunBasics.Areas.Identity.Pages.Account
                 httpPost.Status.ToString();
 
                 if (httpPost.IsCompletedSuccessfully)
-                    return LocalRedirect(returnUrl);
-
+                    return Redirect("/CheckOut");
 
                 //if (!httpPost.Status .IsSuccessful)
                 //    Console.WriteLine("Not able to generate Access Token, Invalid username or password: " + httpPost.StatusCode + httpPost.ErrorMessage);
